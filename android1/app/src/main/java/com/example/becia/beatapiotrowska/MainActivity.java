@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        
 
         this.handler = new android.os.Handler();
         this.handler.postDelayed(
