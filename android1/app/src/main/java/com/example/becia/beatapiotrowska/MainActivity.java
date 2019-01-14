@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         
 
         this.handler = new android.os.Handler();
-        this.handler.postDelayed(
+        this.handler.postDelayed(		//po 5 sekundach zmienia ekran/aktywność
                 this.runnable = new Runnable() {
                     public void run() {
                         Log.i("tag", "This'll run 5000 milliseconds later");
@@ -40,7 +40,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void click(View view) {
-        this.handler.removeCallbacks(this.runnable);
+    /*public void click(View view) {
+        this.handler.removeCallbacks(this.runnable); //anuluje działanie funcji postDelayed
+    }*/
+
+    @Override
+    public void onBackPressed() {
+        this.handler.removeCallbacks(this.runnable); //anuluje działanie funcji postDelayed z użyciem systemowego przycisku back
     }
 }
