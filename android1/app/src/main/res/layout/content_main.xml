@@ -9,13 +9,4 @@
     tools:showIn="@layout/activity_main"
     android:background="@drawable/owczunia" >
 
-    <!--<Button
-        android:id="@+id/back"
-        android:layout_width="match_parent"
-        android:layout_height="71dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/button1"
-        android:onClick="click" />-->
-
 </android.support.constraint.ConstraintLayout>

@@ -16,6 +16,24 @@ public class MainActivity extends AppCompatActivity {
 
     public Runnable runnable;
     public Handler handler;
+    public static boolean flag = false;
+
+    public void delayActivity() {
+        if (false == flag){
+            this.handler = new android.os.Handler();
+            this.handler.postDelayed(		//po 5 sekundach zmienia ekran/aktywność
+                    this.runnable = new Runnable() {
+                        public void run() {
+                            //Log.i("tag", "This'll run 5000 milliseconds later");
+                            Intent intent2;
+                            intent2 = new Intent(MainActivity.this, MainScreen.class);
+                            startActivity(intent2);
+                        }
+                    },
+                    1000);
+            flag = true;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,19 +42,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        
+        Log.i("tag", "Funkcja onCreate");
 
-        this.handler = new android.os.Handler();
-        this.handler.postDelayed(		//po 5 sekundach zmienia ekran/aktywność
-                this.runnable = new Runnable() {
-                    public void run() {
-                        Log.i("tag", "This'll run 5000 milliseconds later");
-                        Intent intent2;
-                        intent2 = new Intent(MainActivity.this, MainScreen.class);
-                        startActivity(intent2);
-                    }
-                },
-                5000);
+
+        delayActivity();
     }
 
 
