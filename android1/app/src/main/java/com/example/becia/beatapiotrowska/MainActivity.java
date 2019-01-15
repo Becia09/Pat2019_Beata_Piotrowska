@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Log.i("tag", "Funkcja onCreate");
+        Log.i("tag", "Funkcja onCreate, MAinActivity - SplashScreen");
 
 
         delayActivity();
@@ -56,5 +56,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         this.handler.removeCallbacks(this.runnable); //anuluje działanie funcji postDelayed z użyciem systemowego przycisku back
+    }
+
+
+    @Override
+    protected void onPause(){
+        Log.i("tag", "Funkcja onPause, MAinActivity - SplashScreen");
+        super.onPause();
     }
 }
