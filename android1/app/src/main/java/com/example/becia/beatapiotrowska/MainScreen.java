@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -27,6 +28,9 @@ public class MainScreen extends AppCompatActivity {
 
     EditText textPassword;
     public String strPassword = "";
+
+    public TextView incorrectEmail;
+    public TextView incorrectPassword;
 
     /*public boolean patternCorrect(EditText text, String str, Pattern pattern, Matcher matcher) {
 
@@ -73,14 +77,24 @@ public class MainScreen extends AppCompatActivity {
                 Log.i("tag", "strEmail: " + strEmail);
                 Log.i("tag", "strPassword: " + strPassword);
 
-                if (matcherEmail.matches() && matcherPassword.matches()){
-                    Log.i("tag", "email i hasło poprawne");
+                incorrectEmail = (TextView) findViewById(R.id.incorrectEmail);
+                incorrectPassword = (TextView) findViewById(R.id.incorrectPassword);
+                incorrectEmail.setText("");
+                incorrectPassword.setText("");
+                if (false == matcherEmail.matches()){
+                    Log.i("tag", "email niepoprawny");
+                    incorrectEmail.setText("Email niepoprawny");
                 }
-                else if (matcherEmail.matches()){
-                    Log.i("tag", "email poprawny");
+
+                if (false == matcherPassword.matches()){
+                    Log.i("tag", "hasło niepoprawne");
+                    incorrectPassword.setText("Hasło niepoprawne");
                 }
-                else if (matcherPassword.matches()){
-                    Log.i("tag", "hasło poprawne");
+
+                if(matcherEmail.matches() && matcherPassword.matches()){
+                    Intent intent4;
+                    intent4 = new Intent(MainScreen.this, LogedScreen.class);
+                    startActivity(intent4);
                 }
             }
         });
