@@ -108,4 +108,11 @@ public class MainScreen extends AppCompatActivity {
         super.onPause();
     }
 
+    @Override
+    public void onBackPressed() {
+        Intent intentLogIn;
+        intentLogIn = new Intent(MainScreen.this, MainActivity.class);
+        startActivity(intentLogIn);
+    }
+
 }

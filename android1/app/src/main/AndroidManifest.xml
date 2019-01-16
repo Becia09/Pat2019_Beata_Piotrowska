@@ -37,6 +37,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.becia.beatapiotrowska.MainScreen" />
         </activity>
+        <activity
+            android:name=".HomeScreen"
+            android:label="@string/title_activity_home_screen"
+            android:parentActivityName=".LogedScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.becia.beatapiotrowska.LogedScreen" />
+        </activity>
     </application>
 
 </manifest>
