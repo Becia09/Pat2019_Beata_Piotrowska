@@ -41,10 +41,10 @@ public class MainScreen extends AppCompatActivity {
     public TextView incorrectPassword;
 
 
-    private String path = Environment.getExternalStorageDirectory().toString() + "/ifLoged";
+    private String path = Environment.getExternalStorageDirectory().toString() + "/"; //"/ifLoged/";
     private final int MEMORY_ACCES = 5;
 
-    /*public void createDir(){
+    public void createDir(){
         File folder = new File(path);
         if (!folder.exists()){
             try{
@@ -54,16 +54,16 @@ public class MainScreen extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
             }
         }
-    }*/
+    }
 
     public void createFile(){
-        File file = new File(path + "/" + ".txt");
+        File file = new File(path + "/" + /*System.currentTimeMillis() +*/ "loged.txt");
         FileOutputStream fOut;
         OutputStreamWriter myOutWriter;
         try {
             fOut = new FileOutputStream(file);
             myOutWriter = new OutputStreamWriter(fOut);
-            myOutWriter.append("plik");
+            myOutWriter.append(strEmail);
             myOutWriter.close();
             fOut.close();
         }
@@ -144,7 +144,7 @@ public class MainScreen extends AppCompatActivity {
                 incorrectPassword = (TextView) findViewById(R.id.incorrectPassword);
                 incorrectEmail.setText("");
                 incorrectPassword.setText("");
-                if (false == matcherEmail.matches()){
+                /*if (false == matcherEmail.matches()){
                     Log.i("tag", "email niepoprawny");
                     incorrectEmail.setText("Email niepoprawny");
                 }
@@ -154,13 +154,15 @@ public class MainScreen extends AppCompatActivity {
                     incorrectPassword.setText("Hasło niepoprawne");
                 }
 
-                if(matcherEmail.matches() && matcherPassword.matches()){
+                if(matcherEmail.matches() && matcherPassword.matches()){*/
                     Intent intent4;
                     intent4 = new Intent(MainScreen.this, LogedScreen.class);
                     startActivity(intent4);
 
+
+                    //createDir();
                     createFile();
-                }
+                //}
             }
         });
 
