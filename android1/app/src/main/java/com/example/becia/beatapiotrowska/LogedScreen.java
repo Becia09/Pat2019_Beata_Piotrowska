@@ -36,6 +36,27 @@ public class LogedScreen extends AppCompatActivity {
     private String interlude = "\n\n\n/////-----/////-----/////\n\n\n";
     private TextView content;
 
+    public boolean deleteFile(){
+        String fullPath = path;
+        System.out.println(fullPath);
+        try{
+            File file = new File(fullPath, "loged.txt");
+            if(file.exists()){
+                boolean result = file.delete();
+                System.out.println("Application able to delete the file and result is: " + result);
+                Log.e("App", "Plik skasowany z rezultatem: " + result);
+                // file.delete();
+                return true;
+            }else{
+                Log.e("App", "Pliku nie ma");
+                System.out.println("Pliku nie ma");
+            }
+        }catch (Exception e){
+            Log.e("tag", "Exception while deleting file " + e.getMessage());
+        }
+        return false;
+    }
+
     private String getAllContent(){
         try{
             File file = new File(path);
@@ -68,6 +89,7 @@ public class LogedScreen extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
+        deleteFile();
         content = (TextView) findViewById(R.id.textView1);
         content.setText(getAllContent());
         //Log.i("tag", "Funkcja: " + content);

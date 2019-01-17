@@ -44,7 +44,7 @@ public class MainScreen extends AppCompatActivity {
     private String path = Environment.getExternalStorageDirectory().toString() + "/"; //"/ifLoged/";
     private final int MEMORY_ACCES = 5;
 
-    public void createDir(){
+    /*public void createDir(){
         File folder = new File(path);
         if (!folder.exists()){
             try{
@@ -54,10 +54,12 @@ public class MainScreen extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
             }
         }
-    }
+    }*/
+
+    File file;
 
     public void createFile(){
-        File file = new File(path + "/" + /*System.currentTimeMillis() +*/ "loged.txt");
+        file = new File(path + "/" + /*System.currentTimeMillis() +*/ "loged.txt");
         FileOutputStream fOut;
         OutputStreamWriter myOutWriter;
         try {
@@ -155,9 +157,9 @@ public class MainScreen extends AppCompatActivity {
                 }
 
                 if(matcherEmail.matches() && matcherPassword.matches()){*/
-                    Intent intent4;
-                    intent4 = new Intent(MainScreen.this, LogedScreen.class);
-                    startActivity(intent4);
+                    Intent intentLogin;
+                    intentLogin = new Intent(MainScreen.this, LogedScreen.class);
+                    startActivity(intentLogin);
 
 
                     //createDir();
@@ -177,6 +179,7 @@ public class MainScreen extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        //super.onBackPressed();
         Intent intentLogIn;
         intentLogIn = new Intent(MainScreen.this, MainActivity.class);
         startActivity(intentLogIn);

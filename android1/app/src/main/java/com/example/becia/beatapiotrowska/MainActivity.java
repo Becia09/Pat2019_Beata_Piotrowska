@@ -56,6 +56,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         this.handler.removeCallbacks(this.runnable); //anuluje działanie funcji postDelayed z użyciem systemowego przycisku back
+
+        if (flag) {
+            //super.onBackPressed();
+            Intent intentLogIn;
+            intentLogIn = new Intent(MainActivity.this, MainActivity.class);
+            startActivity(intentLogIn);
+        }
     }
 
 
