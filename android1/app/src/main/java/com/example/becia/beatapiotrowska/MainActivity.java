@@ -80,16 +80,9 @@ public class MainActivity extends AppCompatActivity {
         if (flag) {
             super.onBackPressed();
 
-            if (FileSession.getInstance().isLogged()){
-                Intent intentLogIn;
-                intentLogIn = new Intent(MainActivity.this, LogedScreen.class);
-                startActivity(intentLogIn);
-            }
-            else{
-                Intent intentLogIn;
-                intentLogIn = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intentLogIn);
-            }
+            Intent intentLogIn;
+            intentLogIn = new Intent(MainActivity.this, LogedScreen.class);
+            startActivity(intentLogIn);
         }
     }
 

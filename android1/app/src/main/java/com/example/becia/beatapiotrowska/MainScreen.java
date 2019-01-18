@@ -112,64 +112,72 @@ public class MainScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_screen);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        Log.i("tag", "Funkcja onCreate, MainScreen - ekran logowania");
 
-
-        if (ActivityCompat.shouldShowRequestPermissionRationale(MainScreen.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {}
-        else {
-            ActivityCompat.requestPermissions(MainScreen.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MEMORY_ACCES);
+        if (FileSession.getInstance().isLogged()){
+            Intent intent2;
+            intent2 = new Intent(MainScreen.this, LogedScreen.class);
+            startActivity(intent2);
         }
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        else {
 
 
-        compiledPatternEmail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
-        compiledPatternPassword = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$");//("[[a-z]+[A-Z]+[0-9]+]{8,}");
+            setContentView(R.layout.activity_main_screen);
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            Log.i("tag", "Funkcja onCreate, MainScreen - ekran logowania");
 
 
-
-        Button buttonLogin = (Button)findViewById(R.id.login);  //przycisk logowania
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                textEmail = (EditText) findViewById(R.id.email);
-                strEmail = textEmail.getText().toString();
-
-                textPassword = (EditText) findViewById(R.id.password);
-                strPassword = textPassword.getText().toString();
-
-                matcherEmail = compiledPatternEmail.matcher(strEmail);
-                matcherPassword = compiledPatternPassword.matcher(strPassword);
-
-                Log.i("tag", "strEmail: " + strEmail);
-                Log.i("tag", "strPassword: " + strPassword);
-
-                incorrectEmail = (TextView) findViewById(R.id.incorrectEmail);
-                incorrectPassword = (TextView) findViewById(R.id.incorrectPassword);
-                incorrectEmail.setText("");
-                incorrectPassword.setText("");
-                /*if (false == matcherEmail.matches()){
-                    Log.i("tag", "email niepoprawny");
-                    incorrectEmail.setText("Email niepoprawny");
-                }
-
-                if (false == matcherPassword.matches()){
-                    Log.i("tag", "hasło niepoprawne");
-                    incorrectPassword.setText("Hasło niepoprawne");
-                }
-
-                if(matcherEmail.matches() && matcherPassword.matches()){*/
+            if (ActivityCompat.shouldShowRequestPermissionRationale(MainScreen.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            } else {
+                ActivityCompat.requestPermissions(MainScreen.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MEMORY_ACCES);
+            }
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-                    /*try{
-                        fs = new FileSession();
+            compiledPatternEmail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
+            compiledPatternPassword = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$");//("[[a-z]+[A-Z]+[0-9]+]{8,}");
+
+
+            Button buttonLogin = (Button) findViewById(R.id.login);  //przycisk logowania
+            buttonLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    textEmail = (EditText) findViewById(R.id.email);
+                    strEmail = textEmail.getText().toString();
+
+                    textPassword = (EditText) findViewById(R.id.password);
+                    strPassword = textPassword.getText().toString();
+
+                    matcherEmail = compiledPatternEmail.matcher(strEmail);
+                    matcherPassword = compiledPatternPassword.matcher(strPassword);
+
+                    Log.i("tag", "strEmail: " + strEmail);
+                    Log.i("tag", "strPassword: " + strPassword);
+
+                    incorrectEmail = (TextView) findViewById(R.id.incorrectEmail);
+                    incorrectPassword = (TextView) findViewById(R.id.incorrectPassword);
+                    incorrectEmail.setText("");
+                    incorrectPassword.setText("");
+                    /*if (false == matcherEmail.matches()){
+                        Log.i("tag", "email niepoprawny");
+                        incorrectEmail.setText("Email niepoprawny");
                     }
-                    catch (ExceptionInInitializerError e) {
-                        fs = FileSession.getInstance();
-                    }*/
+
+                    if (false == matcherPassword.matches()){
+                        Log.i("tag", "hasło niepoprawne");
+                        incorrectPassword.setText("Hasło niepoprawne");
+                    }
+
+                    if(matcherEmail.matches() && matcherPassword.matches()){*/
+
+
+                        /*try{
+                            fs = new FileSession();
+                        }
+                        catch (ExceptionInInitializerError e) {
+                            fs = FileSession.getInstance();
+                        }*/
 
 
                     FileSession.getInstance().createFile();
@@ -179,12 +187,12 @@ public class MainScreen extends AppCompatActivity {
                     startActivity(intentLogin);
 
 
-
                     //createDir();
 
-                //}
-            }
-        });
+                    //}
+                }
+            });
+        }
 
     }
 
@@ -197,10 +205,11 @@ public class MainScreen extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        return;
         //super.onBackPressed();
-        Intent intentLogIn;
-        intentLogIn = new Intent(MainScreen.this, MainActivity.class);
-        startActivity(intentLogIn);
+        /*Intent intentLogIn;
+        intentLogIn = new Intent(MainScreen.this, MainScreen.class);
+        startActivity(intentLogIn);*/
     }
 
 }
