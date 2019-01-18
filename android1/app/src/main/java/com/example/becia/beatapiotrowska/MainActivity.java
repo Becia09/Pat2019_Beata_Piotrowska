@@ -6,7 +6,7 @@ import android.os.Handler;
 
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,12 +22,12 @@ public class MainActivity extends AppCompatActivity {
             this.handler.postDelayed(
                     this.runnable = new Runnable() {
                         public void run() {
-                            Intent intent2;
-                            intent2 = new Intent(MainActivity.this, MainScreen.class);
-                            startActivity(intent2);
+                            Intent intentMainScreen;
+                            intentMainScreen = new Intent(MainActivity.this, MainScreen.class);
+                            startActivity(intentMainScreen);
                         }
                     },
-                    3000);
+                    5000);
             flag = true;
         }
     }
@@ -38,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        Log.i("tag", "Funkcja onCreate, MAinActivity - SplashScreen");
 
         try{
             fs = new FileSession();

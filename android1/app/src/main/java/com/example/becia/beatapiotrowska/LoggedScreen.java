@@ -1,12 +1,7 @@
 package com.example.becia.beatapiotrowska;
-//--------------------------------------------------------------------pozmieniać nazwy intentów
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -15,7 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class LogedScreen extends AppCompatActivity {
+public class LoggedScreen extends AppCompatActivity {
 
     private TextView content;
 
@@ -34,7 +29,7 @@ public class LogedScreen extends AppCompatActivity {
                 FileSession.getInstance().deleteFileLoged();
 
                 Intent intentlogOut;
-                intentlogOut = new Intent(LogedScreen.this, MainScreen.class);
+                intentlogOut = new Intent(LoggedScreen.this, MainScreen.class);
                 startActivity(intentlogOut);
             }
         });
@@ -44,7 +39,7 @@ public class LogedScreen extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intentLogIn;
-        intentLogIn = new Intent(LogedScreen.this, HomeScreen.class);
+        intentLogIn = new Intent(LoggedScreen.this, HomeScreen.class);
         startActivity(intentLogIn);
     }
 

@@ -31,7 +31,7 @@
                 android:value="com.example.becia.beatapiotrowska.MainActivity" />
         </activity>
         <activity
-            android:name=".LogedScreen"
+            android:name=".LoggedScreen"
             android:label="@string/title_activity_loged_screen"
             android:parentActivityName=".MainScreen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -42,11 +42,11 @@
         <activity
             android:name=".HomeScreen"
             android:label="@string/title_activity_home_screen"
-            android:parentActivityName=".LogedScreen"
+            android:parentActivityName=".LoggedScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.becia.beatapiotrowska.LogedScreen" />
+                android:value="com.example.becia.beatapiotrowska.LoggedScreen" />
         </activity>
     </application>
 

@@ -78,7 +78,7 @@ public class MainScreen extends AppCompatActivity {
 
         if (FileSession.getInstance().isLogged()){
             Intent intent2;
-            intent2 = new Intent(MainScreen.this, LogedScreen.class);
+            intent2 = new Intent(MainScreen.this, LoggedScreen.class);
             startActivity(intent2);
         }
         else {
@@ -132,7 +132,7 @@ public class MainScreen extends AppCompatActivity {
                     FileSession.getInstance().createFile();
 
                     Intent intentLogin;
-                    intentLogin = new Intent(MainScreen.this, LogedScreen.class);
+                    intentLogin = new Intent(MainScreen.this, LoggedScreen.class);
                     startActivity(intentLogin);
                     }
                 }
