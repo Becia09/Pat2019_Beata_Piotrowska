@@ -18,6 +18,19 @@ public class MainActivity extends AppCompatActivity {
     public Handler handler;
     public static boolean flag = false;
 
+    public FileSession fs;
+
+    /*MainActivity()
+    {
+        super();
+        /*try{
+            fs = new FileSession();
+        }
+        catch (ExceptionInInitializerError e) {
+            fs = FileSession.getInstance();
+        }
+    }*/
+
     public void delayActivity() {
         if (false == flag){
             this.handler = new android.os.Handler();
@@ -44,6 +57,13 @@ public class MainActivity extends AppCompatActivity {
 
         Log.i("tag", "Funkcja onCreate, MAinActivity - SplashScreen");
 
+        try{
+            fs = new FileSession();
+        }
+        catch (ExceptionInInitializerError e) {
+            fs = FileSession.getInstance();
+        }
+
 
         delayActivity();
     }
@@ -58,10 +78,18 @@ public class MainActivity extends AppCompatActivity {
         this.handler.removeCallbacks(this.runnable); //anuluje działanie funcji postDelayed z użyciem systemowego przycisku back
 
         if (flag) {
-            //super.onBackPressed();
-            Intent intentLogIn;
-            intentLogIn = new Intent(MainActivity.this, MainActivity.class);
-            startActivity(intentLogIn);
+            super.onBackPressed();
+
+            if (FileSession.getInstance().isLogged()){
+                Intent intentLogIn;
+                intentLogIn = new Intent(MainActivity.this, LogedScreen.class);
+                startActivity(intentLogIn);
+            }
+            else{
+                Intent intentLogIn;
+                intentLogIn = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(intentLogIn);
+            }
         }
     }
 

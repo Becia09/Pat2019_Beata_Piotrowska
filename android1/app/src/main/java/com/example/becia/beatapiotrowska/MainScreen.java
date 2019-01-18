@@ -44,6 +44,10 @@ public class MainScreen extends AppCompatActivity {
     private String path = Environment.getExternalStorageDirectory().toString() + "/"; //"/ifLoged/";
     private final int MEMORY_ACCES = 5;
 
+    //FileSession fs;
+
+    //File file;
+
     /*public void createDir(){
         File folder = new File(path);
         if (!folder.exists()){
@@ -56,10 +60,10 @@ public class MainScreen extends AppCompatActivity {
         }
     }*/
 
-    File file;
 
-    public void createFile(){
-        file = new File(path + "/" + /*System.currentTimeMillis() +*/ "loged.txt");
+
+    /*public void createFile(){
+        file = new File(path + "/" + /*System.currentTimeMillis() +*//* "loged.txt");
         FileOutputStream fOut;
         OutputStreamWriter myOutWriter;
         try {
@@ -72,7 +76,7 @@ public class MainScreen extends AppCompatActivity {
         catch (Exception e){
             Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
         }
-    }
+    }*/
 
 
     /*public boolean patternCorrect(EditText text, String str, Pattern pattern, Matcher matcher) {
@@ -125,6 +129,7 @@ public class MainScreen extends AppCompatActivity {
         compiledPatternPassword = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$");//("[[a-z]+[A-Z]+[0-9]+]{8,}");
 
 
+
         Button buttonLogin = (Button)findViewById(R.id.login);  //przycisk logowania
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,13 +162,26 @@ public class MainScreen extends AppCompatActivity {
                 }
 
                 if(matcherEmail.matches() && matcherPassword.matches()){*/
+
+
+                    /*try{
+                        fs = new FileSession();
+                    }
+                    catch (ExceptionInInitializerError e) {
+                        fs = FileSession.getInstance();
+                    }*/
+
+
+                    FileSession.getInstance().createFile();
+
                     Intent intentLogin;
                     intentLogin = new Intent(MainScreen.this, LogedScreen.class);
                     startActivity(intentLogin);
 
 
+
                     //createDir();
-                    createFile();
+
                 //}
             }
         });
