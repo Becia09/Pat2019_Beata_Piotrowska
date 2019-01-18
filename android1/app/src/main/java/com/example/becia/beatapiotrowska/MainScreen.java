@@ -159,7 +159,7 @@ public class MainScreen extends AppCompatActivity {
                     incorrectPassword = (TextView) findViewById(R.id.incorrectPassword);
                     incorrectEmail.setText("");
                     incorrectPassword.setText("");
-                    /*if (false == matcherEmail.matches()){
+                    if (false == matcherEmail.matches()){
                         Log.i("tag", "email niepoprawny");
                         incorrectEmail.setText("Email niepoprawny");
                     }
@@ -169,7 +169,7 @@ public class MainScreen extends AppCompatActivity {
                         incorrectPassword.setText("Hasło niepoprawne");
                     }
 
-                    if(matcherEmail.matches() && matcherPassword.matches()){*/
+                    if(matcherEmail.matches() && matcherPassword.matches()){
 
 
                         /*try{
@@ -189,7 +189,7 @@ public class MainScreen extends AppCompatActivity {
 
                     //createDir();
 
-                    //}
+                    }
                 }
             });
         }
