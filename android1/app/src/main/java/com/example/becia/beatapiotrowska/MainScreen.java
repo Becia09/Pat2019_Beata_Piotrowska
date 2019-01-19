@@ -41,23 +41,6 @@ public class MainScreen extends AppCompatActivity {
     private final int MEMORY_ACCES = 5;
 
 
-
-    /*public boolean patternCorrect(EditText text, String str, Pattern pattern, Matcher matcher) {
-
-        text = (EditText) findViewById(R.id.email);
-        str = text.getText().toString();
-        matcher = pattern.matcher(str);
-
-        if (matcher.matches()){
-            return true;
-        }
-        else {
-            return false;
-        }
-
-    }*/
-
-
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permission, int[] grantResult){
         switch (requestCode){
@@ -71,7 +54,6 @@ public class MainScreen extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,13 +64,9 @@ public class MainScreen extends AppCompatActivity {
             startActivity(intent2);
         }
         else {
-
-
             setContentView(R.layout.activity_main_screen);
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
-            Log.i("tag", "Funkcja onCreate, MainScreen - ekran logowania");
-
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(MainScreen.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             } else {
@@ -108,17 +86,16 @@ public class MainScreen extends AppCompatActivity {
 
                     textEmail = (EditText) findViewById(R.id.email);
                     strEmail = textEmail.getText().toString();
+                    matcherEmail = compiledPatternEmail.matcher(strEmail);
+                    incorrectEmail = (TextView) findViewById(R.id.incorrectEmail);
+                    incorrectEmail.setText("");
 
                     textPassword = (EditText) findViewById(R.id.password);
                     strPassword = textPassword.getText().toString();
-
-                    matcherEmail = compiledPatternEmail.matcher(strEmail);
                     matcherPassword = compiledPatternPassword.matcher(strPassword);
-
-                    incorrectEmail = (TextView) findViewById(R.id.incorrectEmail);
                     incorrectPassword = (TextView) findViewById(R.id.incorrectPassword);
-                    incorrectEmail.setText("");
                     incorrectPassword.setText("");
+
                     if (false == matcherEmail.matches()){
                         incorrectEmail.setText("Email niepoprawny");
                     }
@@ -129,11 +106,11 @@ public class MainScreen extends AppCompatActivity {
 
                     if(matcherEmail.matches() && matcherPassword.matches()){
 
-                    FileSession.getInstance().createFile();
+                        FileSession.getInstance().createFile();
 
-                    Intent intentLogin;
-                    intentLogin = new Intent(MainScreen.this, LoggedScreen.class);
-                    startActivity(intentLogin);
+                        Intent intentLogin;
+                        intentLogin = new Intent(MainScreen.this, LoggedScreen.class);
+                        startActivity(intentLogin);
                     }
                 }
             });
@@ -141,20 +118,9 @@ public class MainScreen extends AppCompatActivity {
 
     }
 
-
-    @Override
-    protected void onPause(){
-        Log.i("tag", "Funkcja onPause, MainScreen - ekran logowania");
-        super.onPause();
-    }
-
     @Override
     public void onBackPressed() {
         return;
-        //super.onBackPressed();
-        /*Intent intentLogIn;
-        intentLogIn = new Intent(MainScreen.this, MainScreen.class);
-        startActivity(intentLogIn);*/
     }
 
 }
