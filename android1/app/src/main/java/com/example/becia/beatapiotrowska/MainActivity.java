@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     public static boolean flag = false;
 
     public FileSession fs;
+    public SharedPreferencesIfLogged spIfLogged;
 
     public void delayActivity() {
         if (false == flag){
@@ -44,6 +45,13 @@ public class MainActivity extends AppCompatActivity {
         }
         catch (ExceptionInInitializerError e) {
             fs = FileSession.getInstance();
+        }
+
+        try{
+            spIfLogged = new SharedPreferencesIfLogged();
+        }
+        catch (ExceptionInInitializerError e) {
+            spIfLogged = SharedPreferencesIfLogged.getInstance();
         }
 
         delayActivity();

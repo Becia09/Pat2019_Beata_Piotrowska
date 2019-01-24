@@ -1,7 +1,9 @@
-package com.example.becia.beatapiotrowska;
+package com.example.becia.beatapiotrowska; //login screen
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,6 +22,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainScreen extends AppCompatActivity {
+
+    //private static final String PREFERENCES_NAME = "ifLogged";
+    //private static final String PREFERENCES_IF_LOGGED = "loggingIn";
+    //private SharedPreferences preferences;
 
     public Pattern compiledPatternEmail;
     public Pattern compiledPatternPassword;
@@ -57,6 +63,7 @@ public class MainScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //preferences = getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE);
 
         if (FileSession.getInstance().isLogged()){
             Intent intent2;
@@ -108,6 +115,9 @@ public class MainScreen extends AppCompatActivity {
 
                         FileSession.getInstance().createFile();
 
+                        //boolean logged = true;
+                        SharedPreferencesIfLogged.getInstance().saveData(true);
+
                         Intent intentLogin;
                         intentLogin = new Intent(MainScreen.this, LoggedScreen.class);
                         startActivity(intentLogin);
@@ -117,6 +127,13 @@ public class MainScreen extends AppCompatActivity {
         }
 
     }
+
+    /*private void saveData(boolean ifLoggin) {
+        SharedPreferences.Editor preferencesEditor = preferences.edit();
+        //String editTextData = "";
+        preferencesEditor.putBoolean(PREFERENCES_IF_LOGGED, ifLoggin);
+        preferencesEditor.commit();
+    }*/
 
     @Override
     public void onBackPressed() {
