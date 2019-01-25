@@ -24,9 +24,9 @@ import java.util.regex.Pattern;
 
 public class MainScreen extends AppCompatActivity {
 
-    private static final String PREFERENCES_NAME = "ifLogged";
-    private static final String PREFERENCES_IF_LOGGED = "loggingIn";
-    private SharedPreferences preferences;
+    //private static final String PREFERENCES_NAME = "ifLogged";
+    //private static final String PREFERENCES_IF_LOGGED = "loggingIn";
+    //private SharedPreferences preferences;
 
     public Pattern compiledPatternEmail;
     public Pattern compiledPatternPassword;
@@ -45,10 +45,10 @@ public class MainScreen extends AppCompatActivity {
 
 
     private String path = Environment.getExternalStorageDirectory().toString() + "/";
-    private final int MEMORY_ACCES = 5;
+    //private final int MEMORY_ACCES = 5;
 
 
-    @Override
+    /*@Override
     public void onRequestPermissionsResult(int requestCode, String[] permission, int[] grantResult){
         switch (requestCode){
             case MEMORY_ACCES:
@@ -59,7 +59,7 @@ public class MainScreen extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Jeśli nie zostanie wyrażona zgoda na dostęp do pamięci plik nie będzi zapisany", Toast.LENGTH_LONG).show();
                 }
         }
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,11 +87,11 @@ public class MainScreen extends AppCompatActivity {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(MainScreen.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            /*if (ActivityCompat.shouldShowRequestPermissionRationale(MainScreen.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             } else {
                 ActivityCompat.requestPermissions(MainScreen.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MEMORY_ACCES);
             }
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);*/
 
 
             compiledPatternEmail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
@@ -147,13 +147,13 @@ public class MainScreen extends AppCompatActivity {
 
     }
 
-    private void saveData(boolean ifLoggin) {
+    /*private void saveData(boolean ifLoggin) {
         SharedPreferences.Editor preferencesEditor = preferences.edit();
         //String editTextData = "";
         preferencesEditor.putBoolean(PREFERENCES_IF_LOGGED, ifLoggin);
         preferencesEditor.commit();
         Log.i("tag", "Funkcja: saveData");
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
