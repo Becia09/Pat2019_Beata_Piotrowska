@@ -21,7 +21,7 @@ public class LoggedScreen extends AppCompatActivity {
 
         if (false == SharedPreferencesIfLogged.getInstance().restoreData()){
             Intent intent2;
-            intent2 = new Intent(LoggedScreen.this, MainScreen.class);
+            intent2 = new Intent(LoggedScreen.this, LoginScreen.class);
             startActivity(intent2);
             Log.i("tag", "Czy zalogowano: " + SharedPreferencesIfLogged.getInstance().restoreData());
         }
@@ -39,7 +39,7 @@ public class LoggedScreen extends AppCompatActivity {
                     SharedPreferencesIfLogged.getInstance().saveData(false);
 
                     Intent intentlogOut;
-                    intentlogOut = new Intent(LoggedScreen.this, MainScreen.class);
+                    intentlogOut = new Intent(LoggedScreen.this, LoginScreen.class);
                     startActivity(intentlogOut);
                 }
             });

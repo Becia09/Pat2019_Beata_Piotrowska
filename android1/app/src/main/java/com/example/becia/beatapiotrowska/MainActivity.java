@@ -1,6 +1,5 @@
 package com.example.becia.beatapiotrowska;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
                     this.runnable = new Runnable() {
                         public void run() {
                             Intent intentMainScreen;
-                            intentMainScreen = new Intent(MainActivity.this, MainScreen.class);
+                            intentMainScreen = new Intent(MainActivity.this, LoginScreen.class);
                             startActivity(intentMainScreen);
                         }
                     },

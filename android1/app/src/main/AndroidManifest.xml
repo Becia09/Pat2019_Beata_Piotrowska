@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainScreen"
+            android:name=".LoginScreen"
             android:label="@string/title_activity_main_screen"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -33,11 +33,11 @@
         <activity
             android:name=".LoggedScreen"
             android:label="@string/title_activity_loged_screen"
-            android:parentActivityName=".MainScreen"
+            android:parentActivityName=".LoginScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.becia.beatapiotrowska.MainScreen" />
+                android:value="com.example.becia.beatapiotrowska.LoginScreen" />
         </activity>
         <activity
             android:name=".HomeScreen"
