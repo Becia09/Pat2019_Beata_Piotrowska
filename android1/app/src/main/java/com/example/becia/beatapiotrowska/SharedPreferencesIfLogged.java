@@ -8,18 +8,20 @@ public class SharedPreferencesIfLogged {
 
     private static final String PREFERENCES_NAME = "ifLogged";
     private static final String PREFERENCES_IF_LOGGED = "loggingIn";
-    private SharedPreferences preferences;
+    public SharedPreferences preferences;
+    private final Context context;
 
     private static SharedPreferencesIfLogged instance = null;
 
-    SharedPreferencesIfLogged() {
+    SharedPreferencesIfLogged(Context context) {
         if (null == instance){
             SharedPreferencesIfLogged.instance = this;
         }
         else{
             throw new ExceptionInInitializerError("Instance class SharedPreferencesIfLogged already exists");
         }
-        //preferences = getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE);
+        this.context = context;
+        preferences = context.getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE);
     }
 
     public static SharedPreferencesIfLogged getInstance() {

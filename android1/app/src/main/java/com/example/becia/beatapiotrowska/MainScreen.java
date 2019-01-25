@@ -64,25 +64,24 @@ public class MainScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        preferences = getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE);
+        //preferences = getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE);
 
-        if (FileSession.getInstance().isLogged()){
+        /*if (FileSession.getInstance().isLogged()){
             Intent intent2;
             intent2 = new Intent(MainScreen.this, LoggedScreen.class);
-            startActivity(intent2);}
+            startActivity(intent2);}*/
 
         /*SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
         boolean first = SharedPreferencesIfLogged.getInstance().getBoolean("firstrun", true);
         SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
         boolean first = preferences.getBoolean("firstrun", true);*/
 
-        /*if (SharedPreferencesIfLogged.getInstance().restoreData()){
-        //if (SharedPreferencesIfLogged.getInstance().restoreData()){
+        if (SharedPreferencesIfLogged.getInstance().restoreData()){
             Intent intent2;
             intent2 = new Intent(MainScreen.this, LoggedScreen.class);
             startActivity(intent2);
             Log.i("tag", "Czy zalogowano: " + SharedPreferencesIfLogged.getInstance().restoreData());
-        }*/
+        }
         else {
             setContentView(R.layout.activity_main_screen);
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -116,7 +115,7 @@ public class MainScreen extends AppCompatActivity {
                     incorrectPassword = (TextView) findViewById(R.id.incorrectPassword);
                     incorrectPassword.setText("");
 
-                    if (false == matcherEmail.matches()){
+                    /*if (false == matcherEmail.matches()){
                         incorrectEmail.setText("Email niepoprawny");
                     }
 
@@ -124,24 +123,24 @@ public class MainScreen extends AppCompatActivity {
                         incorrectPassword.setText("Hasło niepoprawne");
                     }
 
-                    if(matcherEmail.matches() && matcherPassword.matches()){
+                    if(matcherEmail.matches() && matcherPassword.matches()){*/
 
 
-                        FileSession.getInstance().createFile();
+                        //FileSession.getInstance().createFile();
 
-                        saveData(true);
-                        //SharedPreferencesIfLogged.getInstance().saveData(true);
+                        //saveData(true);
+                        SharedPreferencesIfLogged.getInstance().saveData(true);
 
                         Intent intentLogin;
                         intentLogin = new Intent(MainScreen.this, LoggedScreen.class);
                         startActivity(intentLogin);
 
-                        if(preferences.getBoolean(PREFERENCES_IF_LOGGED, false))
+                        /*if(preferences.getBoolean(PREFERENCES_IF_LOGGED, false))
                         {
                             Log.i("tag", "Funkcja: restoreData");
                             Log.i("tag", "Funkcja: restoreData: " + preferences.getBoolean(PREFERENCES_IF_LOGGED, false));
-                        }
-                    }
+                        }*/
+                    //}
                 }
             });
         }

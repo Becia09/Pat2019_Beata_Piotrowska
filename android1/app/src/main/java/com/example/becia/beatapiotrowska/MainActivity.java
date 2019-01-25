@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     public Handler handler;
     public static boolean flag = false;
 
-    public FileSession fs;
+    //public FileSession fs;
     public SharedPreferencesIfLogged spIfLogged;
 
     public void delayActivity() {
@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intentMainScreen);
                         }
                     },
-                    5000);
+                    2000);
             flag = true;
         }
     }
@@ -41,20 +41,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        try{
+        /*try{
             fs = new FileSession();
         }
         catch (ExceptionInInitializerError e) {
             fs = FileSession.getInstance();
-        }
+        }*/
 
 
-        /*try{
-            spIfLogged = new SharedPreferencesIfLogged();
+        try{
+            spIfLogged = new SharedPreferencesIfLogged(this);
         }
         catch (ExceptionInInitializerError e) {
             spIfLogged = SharedPreferencesIfLogged.getInstance();
-        }*/
+        }
+        //preferences = getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE);
 
 
         delayActivity();
