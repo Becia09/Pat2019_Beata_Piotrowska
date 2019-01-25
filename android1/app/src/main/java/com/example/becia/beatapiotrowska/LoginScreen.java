@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 
 public class LoginScreen extends AppCompatActivity {
 
-    Validator instance = new Validator(this);
+    private Validator instance = new Validator(this);
 
     /*public Pattern compiledPatternEmail;
     public Pattern compiledPatternPassword;

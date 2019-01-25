@@ -12,7 +12,7 @@ import android.view.View;
 
 public class Validator /*extends AppCompatActivity*/ {
 
-    private Pattern compiledPatternEmail;
+    /*private Pattern compiledPatternEmail;
     private Pattern compiledPatternPassword;
 
     private Matcher matcherEmail;
@@ -25,25 +25,25 @@ public class Validator /*extends AppCompatActivity*/ {
     private String strPassword = "";
 
     private TextView incorrectEmail;
-    private TextView incorrectPassword;
+    private TextView incorrectPassword;*/
 
 
     public Activity activity;
 
     public Validator(Activity _activity){
 
-        this.activity = _activity;
+        this.activity = _activity; //przekazanie aktywności, żeby klasa niebędąca aktywnością mogła wywoływać findViewById()
     }
 
 
     public boolean emailValidator()
     {
-        compiledPatternEmail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
+        Pattern compiledPatternEmail = Pattern.compile("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$");
 
-        textEmail = (EditText) this.activity.findViewById(R.id.email);
-        strEmail = textEmail.getText().toString();
-        matcherEmail = compiledPatternEmail.matcher(strEmail);
-        incorrectEmail = (TextView) this.activity.findViewById(R.id.incorrectEmail);
+        EditText textEmail = (EditText) this.activity.findViewById(R.id.email);
+        String strEmail = textEmail.getText().toString();
+        Matcher matcherEmail = compiledPatternEmail.matcher(strEmail);
+        TextView incorrectEmail = (TextView) this.activity.findViewById(R.id.incorrectEmail);
         incorrectEmail.setText("");
 
         if (false == matcherEmail.matches()){
@@ -58,12 +58,12 @@ public class Validator /*extends AppCompatActivity*/ {
 
     public boolean passwordValidator()
     {
-        compiledPatternPassword = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+        Pattern compiledPatternPassword = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$");
 
-        textPassword = (EditText) this.activity.findViewById(R.id.password);
-        strPassword = textPassword.getText().toString();
-        matcherPassword = compiledPatternPassword.matcher(strPassword);
-        incorrectPassword = (TextView) this.activity.findViewById(R.id.incorrectPassword);
+        EditText textPassword = (EditText) this.activity.findViewById(R.id.password);
+        String strPassword = textPassword.getText().toString();
+        Matcher matcherPassword = compiledPatternPassword.matcher(strPassword);
+        TextView incorrectPassword = (TextView) this.activity.findViewById(R.id.incorrectPassword);
         incorrectPassword.setText("");
 
         if (false == matcherPassword.matches()) {

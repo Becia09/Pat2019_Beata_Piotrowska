@@ -8,7 +8,7 @@ public class SharedPreferencesIfLogged {
 
     private static final String PREFERENCES_NAME = "ifLogged";
     private static final String PREFERENCES_IF_LOGGED = "loggingIn";
-    public SharedPreferences preferences;
+    private SharedPreferences preferences;
     private final Context context;
 
     private static SharedPreferencesIfLogged instance = null;
