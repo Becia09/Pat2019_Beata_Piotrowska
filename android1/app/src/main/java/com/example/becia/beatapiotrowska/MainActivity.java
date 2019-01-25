@@ -1,5 +1,6 @@
 package com.example.becia.beatapiotrowska;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -47,12 +48,14 @@ public class MainActivity extends AppCompatActivity {
             fs = FileSession.getInstance();
         }
 
-        try{
+
+        /*try{
             spIfLogged = new SharedPreferencesIfLogged();
         }
         catch (ExceptionInInitializerError e) {
             spIfLogged = SharedPreferencesIfLogged.getInstance();
-        }
+        }*/
+
 
         delayActivity();
     }

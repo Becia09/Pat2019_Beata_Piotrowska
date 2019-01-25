@@ -1,4 +1,4 @@
-package com.example.becia.beatapiotrowska;
+package com.example.becia.beatapiotrowska; //zrobić blokadę wejścia do aktywnosci w przypadku niezalogowania
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,6 +27,7 @@ public class LoggedScreen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FileSession.getInstance().deleteFileLoged();
+                //SharedPreferencesIfLogged.getInstance().saveData(false);
 
                 Intent intentlogOut;
                 intentlogOut = new Intent(LoggedScreen.this, MainScreen.class);

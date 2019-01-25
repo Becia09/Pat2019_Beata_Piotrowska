@@ -2,6 +2,7 @@ package com.example.becia.beatapiotrowska; //login screen
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -23,9 +24,9 @@ import java.util.regex.Pattern;
 
 public class MainScreen extends AppCompatActivity {
 
-    //private static final String PREFERENCES_NAME = "ifLogged";
-    //private static final String PREFERENCES_IF_LOGGED = "loggingIn";
-    //private SharedPreferences preferences;
+    private static final String PREFERENCES_NAME = "ifLogged";
+    private static final String PREFERENCES_IF_LOGGED = "loggingIn";
+    private SharedPreferences preferences;
 
     public Pattern compiledPatternEmail;
     public Pattern compiledPatternPassword;
@@ -52,7 +53,7 @@ public class MainScreen extends AppCompatActivity {
         switch (requestCode){
             case MEMORY_ACCES:
                 if(grantResult.length > 0 && grantResult[0] == PackageManager.PERMISSION_GRANTED) { //jeżeli pozwolenie zostało udzielone
-
+                    Log.i("tag", "Zezwolony dostęp");
                 }
                 else {
                     Toast.makeText(getApplicationContext(), "Jeśli nie zostanie wyrażona zgoda na dostęp do pamięci plik nie będzi zapisany", Toast.LENGTH_LONG).show();
@@ -63,13 +64,25 @@ public class MainScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //preferences = getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE);
+        preferences = getSharedPreferences(PREFERENCES_NAME, Activity.MODE_PRIVATE);
 
         if (FileSession.getInstance().isLogged()){
             Intent intent2;
             intent2 = new Intent(MainScreen.this, LoggedScreen.class);
+            startActivity(intent2);}
+
+        /*SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        boolean first = SharedPreferencesIfLogged.getInstance().getBoolean("firstrun", true);
+        SharedPreferences preferences = getActivity().getPreferences(Context.MODE_PRIVATE);
+        boolean first = preferences.getBoolean("firstrun", true);*/
+
+        /*if (SharedPreferencesIfLogged.getInstance().restoreData()){
+        //if (SharedPreferencesIfLogged.getInstance().restoreData()){
+            Intent intent2;
+            intent2 = new Intent(MainScreen.this, LoggedScreen.class);
             startActivity(intent2);
-        }
+            Log.i("tag", "Czy zalogowano: " + SharedPreferencesIfLogged.getInstance().restoreData());
+        }*/
         else {
             setContentView(R.layout.activity_main_screen);
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -113,14 +126,21 @@ public class MainScreen extends AppCompatActivity {
 
                     if(matcherEmail.matches() && matcherPassword.matches()){
 
+
                         FileSession.getInstance().createFile();
 
-                        //boolean logged = true;
-                        SharedPreferencesIfLogged.getInstance().saveData(true);
+                        saveData(true);
+                        //SharedPreferencesIfLogged.getInstance().saveData(true);
 
                         Intent intentLogin;
                         intentLogin = new Intent(MainScreen.this, LoggedScreen.class);
                         startActivity(intentLogin);
+
+                        if(preferences.getBoolean(PREFERENCES_IF_LOGGED, false))
+                        {
+                            Log.i("tag", "Funkcja: restoreData");
+                            Log.i("tag", "Funkcja: restoreData: " + preferences.getBoolean(PREFERENCES_IF_LOGGED, false));
+                        }
                     }
                 }
             });
@@ -128,12 +148,13 @@ public class MainScreen extends AppCompatActivity {
 
     }
 
-    /*private void saveData(boolean ifLoggin) {
+    private void saveData(boolean ifLoggin) {
         SharedPreferences.Editor preferencesEditor = preferences.edit();
         //String editTextData = "";
         preferencesEditor.putBoolean(PREFERENCES_IF_LOGGED, ifLoggin);
         preferencesEditor.commit();
-    }*/
+        Log.i("tag", "Funkcja: saveData");
+    }
 
     @Override
     public void onBackPressed() {
