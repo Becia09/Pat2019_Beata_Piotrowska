@@ -45,7 +45,7 @@ public class RetrofitClass extends AppCompatActivity {
 
         //new JsonTask(this, BASE_SERVER_URL).execute("http://192.168.56.1:8080/page_0.json");
 
-        //new JsonTaskM().execute("https://placehold.it/3000?text=item14");
+        new JsonTaskM().execute("https://placehold.it/3000?text=item14");
     }
 
 
@@ -125,12 +125,15 @@ public class RetrofitClass extends AppCompatActivity {
 
             Gson gson = new Gson();
             String jsonInString = result;
+
+            Log.d("RetClass", "result: " + result);
+
             //User user = gson.fromJson(jsonInString, User.class);
             //Log.d("RetClass", "user: " + user.url);
 
 
-            Data data = gson.fromJson(jsonInString, Data.class);
-            List<User> array = data.array;
+            //Data data = gson.fromJson(jsonInString, Data.class);
+            //List<User> array = data.array;
 
             //Log.d("RetClass", "data.array: " + data.array.get(1).desc);
             //Log.d("RetClass", "array: " + array.get(2).url);

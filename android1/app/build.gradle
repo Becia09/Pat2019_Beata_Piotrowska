@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 android {
     compileSdkVersion 28
     defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+
         applicationId "com.example.becia.beatapiotrowska"
         minSdkVersion 21
         targetSdkVersion 28

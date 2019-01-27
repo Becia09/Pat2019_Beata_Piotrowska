@@ -51,7 +51,8 @@ public class LoggedScreen extends AppCompatActivity {
     public void onBackPressed() {
         Intent intentLogIn;
         //intentLogIn = new Intent(LoggedScreen.this, HomeScreen.class);
-        intentLogIn = new Intent(LoggedScreen.this, RetrofitClass.class);
+        //intentLogIn = new Intent(LoggedScreen.this, RetrofitClass.class);
+        intentLogIn = new Intent(LoggedScreen.this, ImageSc.class);
         startActivity(intentLogIn);
     }
 
