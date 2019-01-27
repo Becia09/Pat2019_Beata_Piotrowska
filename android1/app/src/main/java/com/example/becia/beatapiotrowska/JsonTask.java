@@ -14,18 +14,27 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public class JsonTask extends AsyncTask<String, String, String> {
 
-    ProgressDialog pd;
+    private ProgressDialog pd;
     public static String BASE_SERVER_URL;// = "http://192.168.56.1:8080/page_0.json";
     Context context;
+
+    //public User u = new User();
+    public Data data;// = new Data();
 
     public JsonTask(Context contextActivity, String url)
     {
         this.context = contextActivity;
         this.BASE_SERVER_URL = url;
+        //data.array = new ArrayList<User>();
+        //data.array.add(u);
+        //data.array.get(0).desc = "jeszcze nie ma";
+        //Log.d("RetClass", "data.array: " + this.data.array.get(1).desc);
+        this.execute(BASE_SERVER_URL);
     }
 
     protected void onPreExecute() {
@@ -46,7 +55,7 @@ public class JsonTask extends AsyncTask<String, String, String> {
         BufferedReader reader = null;
 
         try {
-            URL url = new URL("http://192.168.56.1:8080/page_0.json");
+            URL url = new URL(BASE_SERVER_URL);//"http://192.168.56.1:8080/page_0.json");
             connection = (HttpURLConnection) url.openConnection();
             connection.connect();
 
@@ -69,8 +78,10 @@ public class JsonTask extends AsyncTask<String, String, String> {
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
+            Log.d("RetClass: ", "e.printStackTrace(): " + e.toString());
         } catch (IOException e) {
             e.printStackTrace();
+            Log.d("RetClass: ", "e.printStackTrace(): " + e.toString());
         } finally {
             if (connection != null) {
                 connection.disconnect();
@@ -81,6 +92,7 @@ public class JsonTask extends AsyncTask<String, String, String> {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+                Log.d("RetClass: ", "e.printStackTrace(): " + e.toString());
             }
         }
         return null;
@@ -106,10 +118,10 @@ public class JsonTask extends AsyncTask<String, String, String> {
         //Log.d("RetClass", "user: " + user.url);
 
 
-        Data data = gson.fromJson(jsonInString, Data.class);
-        List<User> array = data.array;
+        /*Data*/ data = gson.fromJson(jsonInString, Data.class);
+        //List<User> array = data.array;
 
-        Log.d("RetClass", "data.array: " + data.array.get(1).desc);
-        Log.d("RetClass", "array: " + array.get(2).url);
+        Log.d("RetClass", "data.array: " + data.array.get(0).desc);
+        //Log.d("RetClass", "array: " + array.get(2).url);
     }
 }

@@ -2,9 +2,9 @@ package com.example.becia.beatapiotrowska;
 
 public class User {
 
-    public String title;
-    public String desc;
-    public String url;
+    public String title="1";
+    public String desc="1";
+    public String url="1";
     //public String fdf;
 
 

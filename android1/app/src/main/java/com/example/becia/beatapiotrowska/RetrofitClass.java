@@ -35,12 +35,21 @@ public class RetrofitClass extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-        //new JsonTask().execute(/*"http://10.0.2.2:8080/page_0.json/"*/);
+        //JsonTask jt = new JsonTask(this, BASE_SERVER_URL);
+        //jt.execute("http://192.168.56.1:8080/page_0.json");
+        //Log.d("RetClass: ", "jt.data: " + jt.data.array.get(1).desc);
 
+        //=======JsonTask jt = new JsonTask(this, BASE_SERVER_URL);
+        //jt.execute("http://192.168.56.1:8080/page_0.json");
+        //Log.d("RetClass", "-------------------jt.data.array: " + jt.data.array.get(0).desc); //dopisać callback
+
+        //new JsonTask(this, BASE_SERVER_URL).execute("http://192.168.56.1:8080/page_0.json");
+
+        //new JsonTaskM().execute("https://placehold.it/3000?text=item14");
     }
 
 
-    /*private class JsonTask extends AsyncTask<String, String, String> {
+    private class JsonTaskM extends AsyncTask<String, String, String> {
 
         protected void onPreExecute() {
             super.onPreExecute();
@@ -60,7 +69,7 @@ public class RetrofitClass extends AppCompatActivity {
             BufferedReader reader = null;
 
             try {
-                URL url = new URL("http://192.168.56.1:8080/page_0.json");
+                URL url = new URL("https://placehold.it/3000?text=item14");
                 connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
 
@@ -113,7 +122,7 @@ public class RetrofitClass extends AppCompatActivity {
                     .create();*/
             //Log.d("RetClass", "result: " + result);
             //txtJson.setText(result);
-/*
+
             Gson gson = new Gson();
             String jsonInString = result;
             //User user = gson.fromJson(jsonInString, User.class);
@@ -123,8 +132,8 @@ public class RetrofitClass extends AppCompatActivity {
             Data data = gson.fromJson(jsonInString, Data.class);
             List<User> array = data.array;
 
-            Log.d("RetClass", "data.array: " + data.array.get(1).desc);
-            Log.d("RetClass", "array: " + array.get(2).url);
+            //Log.d("RetClass", "data.array: " + data.array.get(1).desc);
+            //Log.d("RetClass", "array: " + array.get(2).url);
         }
-    }*/
+    }
 }
