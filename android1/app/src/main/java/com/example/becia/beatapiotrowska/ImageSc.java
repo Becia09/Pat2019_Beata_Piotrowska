@@ -88,7 +88,7 @@ public class ImageSc extends AppCompatActivity {
             Log.i("tag", "Callba this.drawable: " + this.drawable);
             img1.setImageDrawable(drawable);
         }
-
+ 
         /*public Drawable LoadImage(String url) {
             try {
                 InputStream is = (InputStream) new URL(url).getContent();
