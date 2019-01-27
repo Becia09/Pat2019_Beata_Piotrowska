@@ -23,7 +23,7 @@ public class LoggedScreen extends AppCompatActivity {
             Intent intent2;
             intent2 = new Intent(LoggedScreen.this, LoginScreen.class);
             startActivity(intent2);
-            Log.i("tag", "Czy zalogowano: " + SharedPreferencesIfLogged.getInstance().restoreData());
+            //Log.i("tag", "Czy zalogowano: " + SharedPreferencesIfLogged.getInstance().restoreData());
         }
         else {
             setContentView(R.layout.activity_loged_screen);
@@ -50,7 +50,8 @@ public class LoggedScreen extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intentLogIn;
-        intentLogIn = new Intent(LoggedScreen.this, HomeScreen.class);
+        //intentLogIn = new Intent(LoggedScreen.this, HomeScreen.class);
+        intentLogIn = new Intent(LoggedScreen.this, RetrofitClass.class);
         startActivity(intentLogIn);
     }
 

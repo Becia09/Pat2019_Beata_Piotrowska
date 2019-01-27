@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.becia.beatapiotrowska">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -10,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -42,6 +44,15 @@
         <activity
             android:name=".HomeScreen"
             android:label="@string/title_activity_home_screen"
+            android:parentActivityName=".LoggedScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.becia.beatapiotrowska.LoggedScreen" />
+        </activity>
+        <activity
+            android:name=".RetrofitClass"
+            android:label="@string/title_activity_retrofit"
             android:parentActivityName=".LoggedScreen"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data

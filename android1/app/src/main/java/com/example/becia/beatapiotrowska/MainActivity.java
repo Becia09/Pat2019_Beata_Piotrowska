@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
                             startActivity(intentMainScreen);
                         }
                     },
-                    2000);
+                    500);
             flag = true;
         }
     }

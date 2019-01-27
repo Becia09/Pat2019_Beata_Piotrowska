@@ -47,7 +47,7 @@ public class LoginScreen extends AppCompatActivity {
             Intent intent2;
             intent2 = new Intent(LoginScreen.this, LoggedScreen.class);
             startActivity(intent2);
-            Log.i("tag", "Czy zalogowano: " + SharedPreferencesIfLogged.getInstance().restoreData());
+            //Log.i("tag", "Czy zalogowano: " + SharedPreferencesIfLogged.getInstance().restoreData());
         }
         else {
             setContentView(R.layout.activity_login_screen);
