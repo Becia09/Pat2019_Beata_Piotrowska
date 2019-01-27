@@ -6,9 +6,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -20,12 +17,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 public class RetrofitClass extends AppCompatActivity {
 
     //Button btnHit;
     //TextView txtJson;
     ProgressDialog pd;
+
+    public final static String BASE_SERVER_URL = "http://192.168.56.1:8080/page_0.json";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +34,13 @@ public class RetrofitClass extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //btnHit = (Button) findViewById(R.id.btnHit);
-        //txtJson = (TextView) findViewById(R.id.tvJsonItem);
 
-
-        new JsonTask().execute("http://10.0.2.2:8080/page_0.json/");
+        //new JsonTask().execute(/*"http://10.0.2.2:8080/page_0.json/"*/);
 
     }
 
 
-    private class JsonTask extends AsyncTask<String, String, String> {
+    /*private class JsonTask extends AsyncTask<String, String, String> {
 
         protected void onPreExecute() {
             super.onPreExecute();
@@ -77,7 +74,7 @@ public class RetrofitClass extends AppCompatActivity {
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line + "\n");
-                    Log.d("RetClass: ", "Line: " + line);
+                    //Log.d("RetClass: ", "Line: " + line);
 
                 }
 
@@ -116,13 +113,18 @@ public class RetrofitClass extends AppCompatActivity {
                     .create();*/
             //Log.d("RetClass", "result: " + result);
             //txtJson.setText(result);
-
+/*
             Gson gson = new Gson();
             String jsonInString = result;
-            //User user= gson.fromJson(jsonInString, User.class);
-            User user= gson.fromJson(jsonInString, User.class);
+            //User user = gson.fromJson(jsonInString, User.class);
+            //Log.d("RetClass", "user: " + user.url);
 
-            Log.d("RetClass", "user: " + user.title);
+
+            Data data = gson.fromJson(jsonInString, Data.class);
+            List<User> array = data.array;
+
+            Log.d("RetClass", "data.array: " + data.array.get(1).desc);
+            Log.d("RetClass", "array: " + array.get(2).url);
         }
-    }
+    }*/
 }

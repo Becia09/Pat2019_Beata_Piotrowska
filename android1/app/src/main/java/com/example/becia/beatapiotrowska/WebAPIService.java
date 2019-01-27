@@ -11,5 +11,5 @@ import retrofit2.http.GET;
 
 public interface WebAPIService {
     @GET("/")
-    Call<JsonObject> readJson();//setLenient(true);
+    Call<Data> readJson();//setLenient(true);
     }

@@ -3,8 +3,10 @@ package com.example.becia.beatapiotrowska;
 public class User {
 
     public String title;
-    private String desc;
-    private String url;
+    public String desc;
+    public String url;
+    //public String fdf;
+
 
 
 

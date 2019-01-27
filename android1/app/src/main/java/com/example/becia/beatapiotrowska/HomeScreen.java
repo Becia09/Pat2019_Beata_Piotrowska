@@ -48,14 +48,6 @@ public class HomeScreen extends AppCompatActivity {
     public static final String BASE_URL = "http://10.0.2.2:8080/page_0.json";
 
 
-    // tag, który jest wykorzystany do logowania
-    private static final String CLASS_TAG = "MainActivity";
-
-    // adapter REST z Retrofita
-    Retrofit retrofit;
-    // nasz interfejs
-    MyWebService myWebService;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,15 +90,15 @@ public class HomeScreen extends AppCompatActivity {
                 .build();
 
         WebAPIService service1 = retrofit1.create(WebAPIService.class);
-        Call<JsonObject> jsonCall = service1.readJson();
-        jsonCall.enqueue(new Callback<JsonObject>() {
+        Call<Data> jsonCall = service1.readJson();
+        jsonCall.enqueue(new Callback<Data>() {
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+            public void onResponse(Call<Data> call, Response<Data> response) {
                 Log.i("LOG_TAG", "onResponse: " + response.body().toString());
             }
 
             @Override
-            public void onFailure(Call<JsonObject> call, Throwable t) {
+            public void onFailure(Call<Data> call, Throwable t) {
                 Log.e("LOG_TAG", "onFailure: " + t.toString());
             }
         });
