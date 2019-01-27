@@ -19,4 +19,5 @@
         app:srcCompat="@drawable/owczunia"
         tools:layout_editor_absoluteX="67dp"
         tools:layout_editor_absoluteY="16dp" />
+
 </RelativeLayout>

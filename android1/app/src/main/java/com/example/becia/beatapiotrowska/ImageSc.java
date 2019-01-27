@@ -47,25 +47,6 @@ public class ImageSc extends AppCompatActivity {
         JsonTaskM jt = new JsonTaskM();
         jt.execute("https://placehold.it/3000?text=item14");
         Log.i("tag", "Drawable jt: " + jt.drawable);
-
-        /*try{
-            URL url = new URL("https://placehold.it/3000?text=item14");
-            Drawable drawable2 = Drawable.createFromStream(url.openStream(), "something.png");
-            Log.i("tag", "Drawable2: " + drawable2);
-        } catch (IOException e) {
-            Log.i("tag", "Drawable2 eIO: ");
-        }*/
-
-
-
-
-
-
-        //Drawable dr = LoadImage("https://placehold.it/3000?text=item14");
-        //Log.i("tag", "Drawable dr: " + dr);
-
-
-
     }
 
     /*public void callBa()
@@ -88,27 +69,16 @@ public class ImageSc extends AppCompatActivity {
             Log.i("tag", "Callba this.drawable: " + this.drawable);
             img1.setImageDrawable(drawable);
         }
- 
-        /*public Drawable LoadImage(String url) {
-            try {
-                InputStream is = (InputStream) new URL(url).getContent();
-                Drawable d = Drawable.createFromStream(is, "src name");
-                Log.i("tag", "Drawable: ");
-                return d;
-            } catch (Exception e) {
-                Log.i("tag", "Drawable e: " + e.toString());
-                return null;
-            }
-        }*/
+
 
         protected void onPreExecute() {
             super.onPreExecute();
             Log.d("RetClass: ", "onPreExecute: ");
 
-            pd = new ProgressDialog(ImageSc.this);
+            /*pd = new ProgressDialog(ImageSc.this);
             pd.setMessage("Please wait");
             pd.setCancelable(false);
-            pd.show();
+            pd.show();*/
         }
 
         protected String doInBackground(String... params) {
@@ -120,22 +90,17 @@ public class ImageSc extends AppCompatActivity {
 
             try {
                 URL url = new URL("https://placehold.it/3000?text=item14");
-                connection = (HttpURLConnection) url.openConnection();
+                /*connection = (HttpURLConnection) url.openConnection();
                 connection.connect();
 
 
                 InputStream stream = connection.getInputStream();
 
-                reader = new BufferedReader(new InputStreamReader(stream));
+                reader = new BufferedReader(new InputStreamReader(stream));*/
 
-                /*drawable = Drawable.createFromStream(stream, "src name");
-                Log.i("tag", "Drawable: ");*/
-
-                //URL url = new URL("http://www.examples.com/something.png");
 
                 drawable = Drawable.createFromStream(url.openStream(), "something.png");
                 Log.i("tag", "Drawable2: " + drawable);
-                //img1.setImageDrawable(drawable);
 
 
                 return null;
@@ -148,7 +113,7 @@ public class ImageSc extends AppCompatActivity {
                 Log.i("tag", "Drawable e: " + e.toString());
                 e.printStackTrace();
             } finally {
-                if (connection != null) {
+                /*if (connection != null) {
                     connection.disconnect();
                 }
                 try {
@@ -156,9 +121,9 @@ public class ImageSc extends AppCompatActivity {
                         reader.close();
                     }
                 } catch (IOException e) {
-                    Log.i("tag", "Drawable e!!!!!: " + e.toString());
+                    Log.i("tag", "Drawable e: " + e.toString());
                     e.printStackTrace();
-                }
+                }*/
             }
             return null;
         }
@@ -168,46 +133,11 @@ public class ImageSc extends AppCompatActivity {
             super.onPostExecute(result);
             Log.d("RetClass: ", "onPostExecute: ");
 
-            if (pd.isShowing()){
+            /*if (pd.isShowing()){
                 pd.dismiss();
-            }
+            }*/
 
             callBa();
-
-
-            /*Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();*/
-            //Log.d("RetClass", "result: " + result);
-            //txtJson.setText(result);
-
-            /*Gson gson = new Gson();
-            String jsonInString = result;
-
-            Log.d("RetClass", "result: " + result);*/
-
-            //User user = gson.fromJson(jsonInString, User.class);
-            //Log.d("RetClass", "user: " + user.url);
-
-
-            //Data data = gson.fromJson(jsonInString, Data.class);
-            //List<User> array = data.array;
-
-            //Log.d("RetClass", "data.array: " + data.array.get(1).desc);
-            //Log.d("RetClass", "array: " + array.get(2).url);
         }
     }
-
-
-        /*public static Drawable LoadImageFromWebOperations(String url) {
-        try {
-            InputStream is = (InputStream) new URL(url).getContent();
-            Drawable d = Drawable.createFromStream(is, "src name");
-            Log.i("tag", "Drawable: ");
-            return d;
-        } catch (Exception e) {
-            Log.i("tag", "Drawable e: " + e.toString());
-            return null;
-        }
-    }*/
 }

@@ -8,4 +8,5 @@
     <string name="title_activity_home_screen">HomeScreen</string>
     <string name="title_activity_retrofit">Retrofit</string>
     <string name="title_activity_image">image</string>
+    <string name="title_activity_recycle_view">RecycleView</string>
 </resources>

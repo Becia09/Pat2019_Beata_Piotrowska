@@ -68,6 +68,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.becia.beatapiotrowska.LoggedScreen" />
         </activity>
+        <activity
+            android:name=".RecycleView"
+            android:label="@string/title_activity_recycle_view"
+            android:parentActivityName=".LoggedScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.becia.beatapiotrowska.LoggedScreen" />
+        </activity>
     </application>
 
 </manifest>
