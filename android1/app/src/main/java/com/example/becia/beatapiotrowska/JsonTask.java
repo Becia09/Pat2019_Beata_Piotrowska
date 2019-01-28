@@ -1,10 +1,11 @@
-package com.example.becia.beatapiotrowska;
+package com.example.becia.beatapiotrowska; //w callba wywoływać funkcję klasy RecycleView pobierającą elementy
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-
+//w klasie pobierającej elementy stworzyć obiekt JsonTask i w jego parametrze przekazywać zmienną do uzupełnienia danymi
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -25,11 +26,24 @@ public class JsonTask extends AsyncTask<String, String, String> {
 
     //public User u = new User();
     public Data data;// = new Data();
+    RecycleView mRecycleView;
 
-    public JsonTask(Context contextActivity, String url)
+    public Data callBa()
+    {
+
+        return data;
+    }
+
+    public JsonTask(Context contextActivity, String url, RecycleView recycleView, Data dataRecView)
     {
         this.context = contextActivity;
         this.BASE_SERVER_URL = url;
+        this.mRecycleView = recycleView;
+
+        /*u.url = "fdsf";
+        dataRecView.array = new ArrayList<User>();
+        dataRecView.array.add(u);*/
+
         //data.array = new ArrayList<User>();
         //data.array.add(u);
         //data.array.get(0).desc = "jeszcze nie ma";
@@ -41,10 +55,10 @@ public class JsonTask extends AsyncTask<String, String, String> {
         super.onPreExecute();
         Log.d("RetClass: ", "onPreExecute: ");
 
-        pd = new ProgressDialog(context);
+        /*pd = new ProgressDialog(context);
         pd.setMessage("Please wait");
         pd.setCancelable(false);
-        pd.show();
+        pd.show();*/
     }
 
     protected String doInBackground(String... params) {
@@ -102,9 +116,9 @@ public class JsonTask extends AsyncTask<String, String, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         Log.d("RetClass: ", "onPostExecute: ");
-        if (pd.isShowing()) {
+        /*if (pd.isShowing()) {
             pd.dismiss();
-        }
+        }*/
 
             /*Gson gson = new GsonBuilder()
                     .setLenient()
@@ -123,5 +137,19 @@ public class JsonTask extends AsyncTask<String, String, String> {
 
         Log.d("RetClass", "data.array: " + data.array.get(0).desc);
         //Log.d("RetClass", "array: " + array.get(2).url);
+
+        mRecycleView.jsonData = data;
+        //mRecycleView.initImageBitmaps();
+
+        for (int i = 0; i < data.array.size(); i++){
+            mRecycleView.mImageTitles.add(data.array.get(i).title);
+            mRecycleView.mImageUrls.add(data.array.get(i).url);
+        }
+
+
+        //mRecycleView.mImageTitles
+        mRecycleView.initRecyclerView();
+
+        callBa();
     }
 }

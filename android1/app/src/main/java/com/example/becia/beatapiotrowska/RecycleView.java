@@ -15,21 +15,30 @@ import java.util.ArrayList;
 public class RecycleView extends AppCompatActivity {
 
     private static final String TAG = "RecView";
+    public final static String BASE_SERVER_URL = "http://192.168.56.1:8080/page_0.json";
 
-    private ArrayList<String> mImageTitles = new ArrayList<>();
-    private ArrayList<String> mImageUrls = new ArrayList<>();
+    public ArrayList<String> mImageTitles = new ArrayList<>();
+    public ArrayList<String> mImageUrls = new ArrayList<>();
+
+    Data jsonData = new Data();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view);
 
-        Log.d("RecView", "onCreate");
+        JsonTask jt = new JsonTask(this, BASE_SERVER_URL, this, jsonData);
+        //jt.execute(BASE_SERVER_URL);
+        //Log.d("RecView", "json: " + jsonData.array.get(0).url);
 
-        initImageBitmaps();
+
+
+        //Log.d("RecView", "onCreate");
+
+        //initImageBitmaps();
     }
 
-    private void initImageBitmaps() {
+    public void initImageBitmaps() {
         Log.d(TAG, "initImageBitmaps: preparing bitmaps.");
 
 
@@ -42,10 +51,16 @@ public class RecycleView extends AppCompatActivity {
         mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
         mImageTitles.add("Portugal");
 
+        //mImageUrls.add(jsonData.array.get(0).url);
+        //mImageTitles.add(jsonData.array.get(0).title);
+
+        /*mImageUrls.add("drawable/owczunia.jpg");
+        mImageTitles.add("Owca");*/
+
         initRecyclerView();
     }
 
-    private void initRecyclerView(){
+    public void initRecyclerView(){
         Log.d("RecView", "initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.RecyclerView);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(mImageTitles, mImageUrls, this);

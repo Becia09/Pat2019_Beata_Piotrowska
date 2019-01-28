@@ -21,8 +21,6 @@ import java.util.List;
 
 public class RetrofitClass extends AppCompatActivity {
 
-    //Button btnHit;
-    //TextView txtJson;
     ProgressDialog pd;
 
     public final static String BASE_SERVER_URL = "http://192.168.56.1:8080/page_0.json";
@@ -55,10 +53,10 @@ public class RetrofitClass extends AppCompatActivity {
             super.onPreExecute();
             Log.d("RetClass: ", "onPreExecute: ");
 
-            pd = new ProgressDialog(RetrofitClass.this);
+            /*pd = new ProgressDialog(RetrofitClass.this);
             pd.setMessage("Please wait");
             pd.setCancelable(false);
-            pd.show();
+            pd.show();*/
         }
 
         protected String doInBackground(String... params) {
@@ -113,9 +111,9 @@ public class RetrofitClass extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             Log.d("RetClass: ", "onPostExecute: ");
-            if (pd.isShowing()){
+            /*if (pd.isShowing()){
                 pd.dismiss();
-            }
+            }*/
 
             /*Gson gson = new GsonBuilder()
                     .setLenient()

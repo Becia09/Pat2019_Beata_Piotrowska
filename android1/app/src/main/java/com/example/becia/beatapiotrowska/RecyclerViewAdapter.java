@@ -36,6 +36,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.mTitles = titles;
         this.mImages = images;
         this.mContext = context;
+
+        /*for (int i = 0; i < 10; i++)
+        {
+            this.mTitles.add("Title");
+            this.mImages.add();
+        }*/
+
     }
 
 //    @NonNull
@@ -57,14 +64,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.title.setText(mTitles.get(position));
 
-        holder.parentLayout.setOnClickListener(new View.OnClickListener(){
+        /*holder.parentLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Log.d("RecView", "onClick: " + mTitles.get(position));
 
                 Toast.makeText(mContext, mTitles.get(position), Toast.LENGTH_SHORT).show(); //chyba wyswietlanie dymkow po kliknięciu
             }
-        });
+        });*/
 
     }
 
@@ -76,7 +83,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView image;
+        ImageView image; //CircleImageView
         TextView title;
         RelativeLayout parentLayout;
 
@@ -86,6 +93,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             image = itemView.findViewById(R.id.image);
             title = itemView.findViewById(R.id.title);
             parentLayout = itemView.findViewById(R.id.parent_layout);
+
+
         }
     }
 }
