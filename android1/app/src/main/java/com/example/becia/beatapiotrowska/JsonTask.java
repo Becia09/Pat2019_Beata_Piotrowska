@@ -27,6 +27,8 @@ public class JsonTask extends AsyncTask<String, String, String> {
     //public User u = new User();
     public Data data;// = new Data();
     RecycleView mRecycleView;
+    public ArrayList<String> mImageTitlesJ = new ArrayList<>();
+    public ArrayList<String> mImagesJ = new ArrayList<>();
 
     public Data callBa()
     {
@@ -142,13 +144,17 @@ public class JsonTask extends AsyncTask<String, String, String> {
         //mRecycleView.initImageBitmaps();
 
         for (int i = 0; i < data.array.size(); i++){
+            //mImageTitlesJ.add(data.array.get(i).title);
+            //mImagesJ.add(data.array.get(i).url);
             mRecycleView.mImageTitles.add(data.array.get(i).title);
             mRecycleView.mImageUrls.add(data.array.get(i).url);
             mRecycleView.mImageDescs.add(data.array.get(i).desc);
         }
 
+        //mRecycleView.mImageTitles = mImageTitlesJ;
+        //mRecycleView.mImageUrls = mImagesJ;
 
-        //mRecycleView.mImageTitles
+
         mRecycleView.initRecyclerView();
 
         callBa();
