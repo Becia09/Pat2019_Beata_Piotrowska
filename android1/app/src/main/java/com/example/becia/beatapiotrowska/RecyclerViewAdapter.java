@@ -30,22 +30,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<String> mTitles = new ArrayList<>();
     private ArrayList<String> mImages = new ArrayList<>();
+    private ArrayList<String> mDescs = new ArrayList<>();
     private Context mContext;
 
-    public RecyclerViewAdapter(ArrayList<String> titles, ArrayList<String> images, Context context) {
+    public boolean mFlag = false;
+
+    public RecyclerViewAdapter(ArrayList<String> titles, ArrayList<String> descs, ArrayList<String> images, Context context, boolean flag) {
         this.mTitles = titles;
+        this.mDescs = descs;
         this.mImages = images;
+
+        this.mFlag = flag;
         this.mContext = context;
-
-        /*for (int i = 0; i < 10; i++)
-        {
-            this.mTitles.add("Title");
-            this.mImages.add();
-        }*/
-
     }
 
-//    @NonNull
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_elements, parent, false);
@@ -57,19 +56,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, final int position) {
         Log.d("RecView", "onBindViewHolder: called.");
 
+
         Glide.with(mContext)
                 .asBitmap()
                 .load(mImages.get(position))
                 .into(holder.image);
 
         holder.title.setText(mTitles.get(position));
+        holder.desc.setText(mDescs.get(position));
 
         /*holder.parentLayout.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 Log.d("RecView", "onClick: " + mTitles.get(position));
 
-                Toast.makeText(mContext, mTitles.get(position), Toast.LENGTH_SHORT).show(); //chyba wyswietlanie dymkow po kliknięciu
+                Toast.makeText(mContext, mTitles.get(position), Toast.LENGTH_SHORT).show(); //chyba wyswietlanie dymkow po klikniÄ™ciu
             }
         });*/
 
@@ -85,6 +86,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         ImageView image; //CircleImageView
         TextView title;
+        TextView desc;
+
         RelativeLayout parentLayout;
 
         public ViewHolder(View itemView) {
@@ -92,6 +95,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             image = itemView.findViewById(R.id.image);
             title = itemView.findViewById(R.id.title);
+            desc = itemView.findViewById(R.id.desc);
+
             parentLayout = itemView.findViewById(R.id.parent_layout);
 
 

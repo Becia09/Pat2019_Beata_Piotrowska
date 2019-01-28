@@ -144,6 +144,7 @@ public class JsonTask extends AsyncTask<String, String, String> {
         for (int i = 0; i < data.array.size(); i++){
             mRecycleView.mImageTitles.add(data.array.get(i).title);
             mRecycleView.mImageUrls.add(data.array.get(i).url);
+            mRecycleView.mImageDescs.add(data.array.get(i).desc);
         }
 
 

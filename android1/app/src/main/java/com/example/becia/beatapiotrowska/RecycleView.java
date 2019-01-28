@@ -18,6 +18,7 @@ public class RecycleView extends AppCompatActivity {
     public final static String BASE_SERVER_URL = "http://192.168.56.1:8080/page_0.json";
 
     public ArrayList<String> mImageTitles = new ArrayList<>();
+    public ArrayList<String> mImageDescs = new ArrayList<>();
     public ArrayList<String> mImageUrls = new ArrayList<>();
 
     Data jsonData = new Data();
@@ -44,12 +45,15 @@ public class RecycleView extends AppCompatActivity {
 
         mImageUrls.add("https://placehold.it/3000?text=item14");
         mImageTitles.add("Havasu Falls");
+        mImageDescs.add("Havasu Falls");
 
         mImageUrls.add("https://i.redd.it/tpsnoz5bzo501.jpg");
         mImageTitles.add("Trondheim");
+        mImageDescs.add("Havasu Falls");
 
         mImageUrls.add("https://i.redd.it/qn7f9oqu7o501.jpg");
         mImageTitles.add("Portugal");
+        mImageDescs.add("Havasu Falls");
 
         //mImageUrls.add(jsonData.array.get(0).url);
         //mImageTitles.add(jsonData.array.get(0).title);
@@ -63,7 +67,8 @@ public class RecycleView extends AppCompatActivity {
     public void initRecyclerView(){
         Log.d("RecView", "initRecyclerView: init recyclerview");
         RecyclerView recyclerView = findViewById(R.id.RecyclerView);
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mImageTitles, mImageUrls, this);
+        //RecyclerViewAdapter adapter = new RecyclerViewAdapter();
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(mImageTitles, mImageDescs, mImageUrls, this, false);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
