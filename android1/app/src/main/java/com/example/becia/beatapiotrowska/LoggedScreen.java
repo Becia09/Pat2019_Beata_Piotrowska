@@ -1,4 +1,6 @@
-package com.example.becia.beatapiotrowska; //zrobić blokadę wejścia do aktywnosci w przypadku niezalogowania
+//zrobić na retroficie
+//zrobić callback() zamiast Callba()
+package com.example.becia.beatapiotrowska;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -52,7 +54,8 @@ public class LoggedScreen extends AppCompatActivity {
         Intent intentLogIn;
         //intentLogIn = new Intent(LoggedScreen.this, HomeScreen.class);
         //intentLogIn = new Intent(LoggedScreen.this, RetrofitClass.class);
-        intentLogIn = new Intent(LoggedScreen.this, ImageSc.class);
+        //intentLogIn = new Intent(LoggedScreen.this, ImageSc.class);
+        intentLogIn = new Intent(LoggedScreen.this, RecycleView.class);
         startActivity(intentLogIn);
     }
 
