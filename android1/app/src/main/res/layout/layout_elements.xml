@@ -5,6 +5,15 @@
     android:padding="15dp"
     android:id="@+id/parent_layout">
 
+
+<ImageView
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:padding="10dp"
+    android:id="@+id/imageTemp"
+    android:src="@drawable/owczunia"/>
+
+
     <!--<ImageView-->
     <!--de.hdodenhof.circleimageview.CircleImageView-->
     <ImageView
