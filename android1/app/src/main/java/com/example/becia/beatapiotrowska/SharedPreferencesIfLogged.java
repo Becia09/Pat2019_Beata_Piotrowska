@@ -10,7 +10,6 @@ public class SharedPreferencesIfLogged {
     private static final String PREFERENCES_IF_LOGGED = "loggingIn";
     private SharedPreferences preferences;
     private final Context context;
-
     private static SharedPreferencesIfLogged instance = null;
 
     SharedPreferencesIfLogged(Context context) {
@@ -30,15 +29,12 @@ public class SharedPreferencesIfLogged {
 
     public void saveData(boolean ifLoggin) {
         SharedPreferences.Editor preferencesEditor = preferences.edit();
-        //String editTextData = "";
         preferencesEditor.putBoolean(PREFERENCES_IF_LOGGED, ifLoggin);
         preferencesEditor.commit();
     }
 
     public boolean restoreData() {
-
         boolean ifLoggin = false;
-        //if ()
         return preferences.getBoolean(PREFERENCES_IF_LOGGED, ifLoggin);
     }
 }
