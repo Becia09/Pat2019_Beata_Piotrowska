@@ -9,13 +9,15 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.View.OnScrollChangeListener;
 
 import java.util.ArrayList;
 
 public class RecycleView extends AppCompatActivity {
 
     private static final String TAG = "RecView";
-    public final static String BASE_SERVER_URL = "http://192.168.56.1:8080/page_1.json";
+    public final static String BASE_SERVER_URL = "http://192.168.56.1:8080/page_0.json";
 
     public ArrayList<String> mImageTitles = new ArrayList<>();
     public ArrayList<String> mImageDescs = new ArrayList<>();
