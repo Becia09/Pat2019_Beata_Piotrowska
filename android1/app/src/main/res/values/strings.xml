@@ -10,5 +10,6 @@
     <string name="title_activity_image">image</string>
     <string name="title_activity_recycle_view">RecycleView</string>
     <string name="goRecycler">Przejdź do listy elementów</string>
+    <string name="loadNextPage">v</string>
 
 </resources>
