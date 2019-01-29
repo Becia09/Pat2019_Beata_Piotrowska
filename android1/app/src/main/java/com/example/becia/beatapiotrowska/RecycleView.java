@@ -30,15 +30,9 @@ public class RecycleView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycle_view);
 
-        JsonTask jt = new JsonTask(this, BASE_SERVER_URL, this, jsonData);
-        //jt.execute(BASE_SERVER_URL);
-        //Log.d("RecView", "json: " + jsonData.array.get(0).url);
+        JsonTask jt = new JsonTask(this, BASE_SERVER_URL, this);
 
-
-
-        //Log.d("RecView", "onCreate");
-
-        //initImageBitmaps();
+        initImageBitmaps();
     }
 
     public void initImageBitmaps() {

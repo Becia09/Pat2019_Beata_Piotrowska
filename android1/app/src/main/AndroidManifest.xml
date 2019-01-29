@@ -42,33 +42,6 @@
                 android:value="com.example.becia.beatapiotrowska.LoginScreen" />
         </activity>
         <activity
-            android:name=".HomeScreen"
-            android:label="@string/title_activity_home_screen"
-            android:parentActivityName=".LoggedScreen"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.becia.beatapiotrowska.LoggedScreen" />
-        </activity>
-        <activity
-            android:name=".RetrofitClass"
-            android:label="@string/title_activity_retrofit"
-            android:parentActivityName=".LoggedScreen"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.becia.beatapiotrowska.LoggedScreen" />
-        </activity>
-        <activity
-            android:name=".ImageSc"
-            android:label="@string/title_activity_image"
-            android:parentActivityName=".LoggedScreen"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.becia.beatapiotrowska.LoggedScreen" />
-        </activity>
-        <activity
             android:name=".RecycleView"
             android:label="@string/title_activity_recycle_view"
             android:parentActivityName=".LoggedScreen"

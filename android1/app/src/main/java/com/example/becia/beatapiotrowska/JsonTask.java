@@ -1,11 +1,11 @@
-package com.example.becia.beatapiotrowska; //w callba wywoływać funkcję klasy RecycleView pobierającą elementy
+package com.example.becia.beatapiotrowska;
 
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
+
 import android.util.Log;
-//w klasie pobierającej elementy stworzyć obiekt JsonTask i w jego parametrze przekazywać zmienną do uzupełnienia danymi
+
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
@@ -16,7 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class JsonTask extends AsyncTask<String, String, String> {
 
@@ -24,10 +24,11 @@ public class JsonTask extends AsyncTask<String, String, String> {
     public static String BASE_SERVER_URL;// = "http://192.168.56.1:8080/page_0.json";
     Context context;
 
-    //public User u = new User();
-    public Data data;// = new Data();
+
+    public Data data;
     RecycleView mRecycleView;
     public ArrayList<String> mImageTitlesJ = new ArrayList<>();
+    public ArrayList<String> mImageDescJ = new ArrayList<>();
     public ArrayList<String> mImagesJ = new ArrayList<>();
 
     public Data callBa()
@@ -36,20 +37,12 @@ public class JsonTask extends AsyncTask<String, String, String> {
         return data;
     }
 
-    public JsonTask(Context contextActivity, String url, RecycleView recycleView, Data dataRecView)
+    public JsonTask(Context contextActivity, String url, RecycleView recycleView)
     {
         this.context = contextActivity;
         this.BASE_SERVER_URL = url;
         this.mRecycleView = recycleView;
 
-        /*u.url = "fdsf";
-        dataRecView.array = new ArrayList<User>();
-        dataRecView.array.add(u);*/
-
-        //data.array = new ArrayList<User>();
-        //data.array.add(u);
-        //data.array.get(0).desc = "jeszcze nie ma";
-        //Log.d("RetClass", "data.array: " + this.data.array.get(1).desc);
         this.execute(BASE_SERVER_URL);
     }
 
@@ -57,10 +50,6 @@ public class JsonTask extends AsyncTask<String, String, String> {
         super.onPreExecute();
         Log.d("RetClass: ", "onPreExecute: ");
 
-        /*pd = new ProgressDialog(context);
-        pd.setMessage("Please wait");
-        pd.setCancelable(false);
-        pd.show();*/
     }
 
     protected String doInBackground(String... params) {
@@ -118,45 +107,32 @@ public class JsonTask extends AsyncTask<String, String, String> {
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
         Log.d("RetClass: ", "onPostExecute: ");
-        /*if (pd.isShowing()) {
-            pd.dismiss();
-        }*/
 
-            /*Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();*/
-        //Log.d("RetClass", "result: " + result);
-        //txtJson.setText(result);
 
         Gson gson = new Gson();
         String jsonInString = result;
-        //User user = gson.fromJson(jsonInString, User.class);
-        //Log.d("RetClass", "user: " + user.url);
 
-
-        /*Data*/ data = gson.fromJson(jsonInString, Data.class);
-        //List<User> array = data.array;
+        data = gson.fromJson(jsonInString, Data.class);
 
         Log.d("RetClass", "data.array: " + data.array.get(0).desc);
-        //Log.d("RetClass", "array: " + array.get(2).url);
 
         mRecycleView.jsonData = data;
-        //mRecycleView.initImageBitmaps();
+
 
         for (int i = 0; i < data.array.size(); i++){
-            //mImageTitlesJ.add(data.array.get(i).title);
-            //mImagesJ.add(data.array.get(i).url);
-            mRecycleView.mImageTitles.add(data.array.get(i).title);
-            mRecycleView.mImageUrls.add(data.array.get(i).url);
-            mRecycleView.mImageDescs.add(data.array.get(i).desc);
+            mImageTitlesJ.add(data.array.get(i).title);
+            mImagesJ.add(data.array.get(i).url);
+            mImageDescJ.add(data.array.get(i).desc);
+            //mRecycleView.mImageTitles.add(data.array.get(i).title);
+            //mRecycleView.mImageUrls.add(data.array.get(i).url);
+            //mRecycleView.mImageDescs.add(data.array.get(i).desc);
         }
 
-        //mRecycleView.mImageTitles = mImageTitlesJ;
-        //mRecycleView.mImageUrls = mImagesJ;
+        mRecycleView.mImageTitles = mImageTitlesJ;
+        mRecycleView.mImageUrls = mImagesJ;
+        mRecycleView.mImageDescs = mImageDescJ;
 
 
         mRecycleView.initRecyclerView();
-
-        callBa();
     }
 }
